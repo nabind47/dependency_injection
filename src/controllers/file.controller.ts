@@ -1,13 +1,18 @@
 import { Request, Response } from "express";
 
-import { clUploader } from "../utils/cloudinary";
+interface IUploader {
+  upload: (filename: string) => Promise<boolean>;
+}
 
 export const fileController = {
-  upload: async (req: Request, res: Response) => {
+  upload: async (
+    req: Request,
+    res: Response,
+    { uploader }: { uploader: IUploader }
+  ) => {
     // Upload file to S3
 
-    // await s3Uploader.upload("test.mp4");
-    await clUploader.upload("test.mp4");
+    await uploader.upload("test.mp4");
     res.json({ message: "Hello World!!" });
   },
 };
