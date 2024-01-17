@@ -5,11 +5,7 @@ interface IUploader {
 }
 
 export class FileController {
-  private uploader: IUploader;
-
-  constructor(uploader: IUploader) {
-    this.uploader = uploader;
-  }
+  constructor(private uploader: IUploader) {}
 
   upload(req: Request, res: Response) {
     // Upload file to S3
