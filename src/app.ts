@@ -1,5 +1,5 @@
 import express from "express";
-import { fileController } from "./controllers/file.controller";
+import { FileController } from "./controllers/file.controller";
 import { clUploader } from "./utils/cloudinary";
 import { s3Uploader } from "./utils/s3-uploader";
 
@@ -9,10 +9,10 @@ app.get("/", (req, res) => {
   const uploaderStr = req.query.uploader;
 
   if (uploaderStr === "s3") {
-    fileController.upload(req, res, { uploader: s3Uploader });
+    new FileController(s3Uploader).upload(req, res);
     return;
   } else if (uploaderStr === "cloudinary") {
-    fileController.upload(req, res, { uploader: clUploader });
+    new FileController(clUploader).upload(req, res);
     return;
   } else {
     res.status(400).json({ message: "Invalid uploader" });
