@@ -1,8 +1,8 @@
-export const s3Uploader = {
-  upload: async (filename: string) => {
-    // upload to s3x1
+export class S3Uploader {
+  async upload(filename: string) {
+    // upload to s31
 
     console.log(`Uploading ${filename} to s3...`);
     return true;
-  },
-};
+  }
+}

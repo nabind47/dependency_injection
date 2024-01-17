@@ -1,8 +1,8 @@
-export const clUploader = {
-  upload: async (filename: string) => {
-    // upload to clx1
+export class ClUploader {
+  async upload(filename: string) {
+    // upload to cloudinary
 
-    console.log(`Uploading ${filename} to cl...`);
+    console.log(`Uploading ${filename} to cloudinary...`);
     return true;
-  },
-};
+  }
+}
