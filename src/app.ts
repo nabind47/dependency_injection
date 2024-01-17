@@ -10,12 +10,12 @@ app.get("/", (req, res) => {
   const uploaderStr = req.query.uploader;
 
   if (uploaderStr === "s3") {
-    const uploader = new S3Uploader();
+    const uploader = new S3Uploader("posts");
 
     new FileController(uploader).upload(req, res);
     return;
   } else if (uploaderStr === "cloudinary") {
-    const uploader = new ClUploader();
+    const uploader = new ClUploader("communities");
     new FileController(uploader).upload(req, res);
     return;
   } else {
